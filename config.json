@@ -2,6 +2,32 @@
     "name": "Daniel Hermano Dessoldi (dhdessoldi)",
     "job": "Calculista e projetista de estruturas em aço",
     "github": "dhdessoldi",
+    "favorites": [{
+            "channel_img": "https://yt3.ggpht.com/ytc/AMLnZu9pDOp93R9V0cp_CodoiMk8FM60-46FkdDasQ1i=s88-c-k-c0x00ffffff-no-rj",
+            "channel_url": "https://www.youtube.com/c/JovemNerd",
+            "channel_name": "Jovem Nerd"
+        },
+        {
+            "channel_img": "https://yt3.ggpht.com/ytc/AMLnZu8ols4v6xJtNosUSC8Ebj2qgK_qDC7pLzB5UYg3=s88-c-k-c0x00ffffff-no-rj",
+            "channel_url": "https://www.youtube.com/c/LivesAlanzoka",
+            "channel_name": "Lives do Alanzoka"
+        },
+        {
+            "channel_img": "https://yt3.ggpht.com/H_---ano_f27DOCejDhUdBMtBcxcv32MoXmFKQc_mBcxYSH4HPZTGuBUdm7UgI5VlutMOVX2=s88-c-k-c0x00ffffff-no-rj",
+            "channel_url": "https://www.youtube.com/c/IGN",
+            "channel_name": "IGN"
+        },
+        {
+            "channel_img": "https://yt3.ggpht.com/ytc/AMLnZu91BueDfRw_PPeht766E0RdKohGtiwzo89ozw_Jthk=s88-c-k-c0x00ffffff-no-rj",
+            "channel_url": "https://www.youtube.com/c/PlayStation",
+            "channel_name": "PlayStation"
+        },
+        {
+            "channel_img": "https://yt3.ggpht.com/ytc/AMLnZu-bu8UoUTz6sCJgx86VKU1HI1PheMS-2KjnkEZ0=s88-c-k-c0x00ffffff-no-rj",
+            "channel_url": "https://www.youtube.com/c/CortesdoCasimitoOFICIAL",
+            "channel_name": "Cortes do Casimito [OFICIAL]"
+        }
+    ],
     "playlists": {
         "jogos": [
             {
@@ -130,4 +156,5 @@
             }
         ]
     }
+
 }

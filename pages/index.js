@@ -1,15 +1,15 @@
-import config from "../config.json"
+import React from "react";
+import config from "../config.json";
 import styled from "styled-components";
-import {CSSReset} from "../src/components/CSSReset";
+import { CSSReset } from "../src/components/CSSReset";
 import Menu from "../src/components/Menu";
 import { StyledTimeline } from "../src/components/Timeline";
+import { StyledFavorites } from "../src/components/Favorites";
 
 function HomePage() {
 
-    const estilosDaHomePage = {
-      // backgroundColor: 'red'
-    };
-    console.log(config.playlists);
+    const [valorDoFiltro, setValorDoFiltro] = React.useState("");
+
 
     return (
         <>
@@ -18,34 +18,36 @@ function HomePage() {
                 display: "flex",
                 flexDirection: "column",
                 flex: 1,
-                // backgroundColor: "red",
+
             }}>
-                <Menu />
+                <Menu valorDoFiltro={valorDoFiltro} setValorDoFiltro={setValorDoFiltro} />
                 <Header />
-                <TimeLine playlists={config.playlists} />
+                <TimeLine searchValue={valorDoFiltro} playlists={config.playlists}>
+                    Conteúdo
+                </TimeLine>
+                {/* <Favorite favorites={config.favorites} /> */}
             </div>
-        
+
         </>
     );
 }
 
 export default HomePage
 
-// function Menu() {
-//     return (
-//         <div>
-//             Menu
-
-//         </div>
-//     )
-// }
-
 const StyledHeader = styled.div`
-    img {
+    .banner {
+        background-image: url("https://images.unsplash.com/photo-1638444458366-060c19121512?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80");
+        background-size: cover;
+        background-position-y: 40%;
+        height: 230px;
+    }
+    
+    .user-photo {
         width: 80px;
         height: 80px;
         border-radius: 50%;
     }
+
     .user-info {
         display: flex;
         align-items: center;
@@ -56,11 +58,14 @@ const StyledHeader = styled.div`
 `;
 function Header() {
     return (
+
         <StyledHeader>
-            {/* <img src="banner" /> */}
+            <section className="banner">
+
+            </section>
 
             <section className="user-info">
-                <img src={`https://github.com/${config.github}.png`} />
+                <img className="user-photo" src={`https://github.com/${config.github}.png`} />
                 <div>
                     <h2>
                         {config.name}
@@ -74,27 +79,33 @@ function Header() {
     )
 }
 
-function TimeLine(propriedades) {
+function TimeLine({ searchValue, ...propriedades }) {
 
     const playlistNames = Object.keys(propriedades.playlists);
     return (
         <StyledTimeline>
-            {playlistNames.map(function (playlistNames) {
-                const videos = propriedades.playlists[playlistNames];
+            {playlistNames.map(function (playlistName) {
+                const videos = propriedades.playlists[playlistName];
                 return (
-                    <section>
-                        <h2>{playlistNames}</h2>
+                    <section key={playlistName}>
+                        <h2>{playlistName}</h2>
                         <div>
-                            {videos.map((video) => {
-                                return (
-                                    <a href={video.url}>
-                                        <img src={video.thumb} />
-                                        <span>
-                                            {video.title}
-                                        </span>
-                                    </a>
-                                )
-                            })}
+                            {videos
+                                .filter((video) => {
+                                    const titleNormalized = video.title.toLowerCase();
+                                    const searchValueNormalized = searchValue.toLowerCase();
+                                    return titleNormalized.includes(searchValueNormalized)
+                                })
+                                .map((video) => {
+                                    return (
+                                        <a key={video.url} href={video.url}>
+                                            <img src={video.thumb} />
+                                            <span>
+                                                {video.title}
+                                            </span>
+                                        </a>
+                                    )
+                                })}
                         </div>
                     </section>
                 )
@@ -102,3 +113,32 @@ function TimeLine(propriedades) {
         </StyledTimeline>
     )
 }
+
+
+// function Favorite(propriedades) {
+//     const favoritesNames = Object.keys(propriedades.favorites);
+//     return (
+//         <StyledFavorites>
+//             {favoritesNames.map(function (favoritesNames) {
+//                 const channels = propriedades.favorites[favoritesNames];
+//                 return (
+//                     <section>
+//                         <h2>{favoritesNames}</h2>
+//                         <div>
+//                             {channels.map((channel) => {
+//                                 return (
+//                                     <a href={channel.channel_url}>
+//                                         <img src={channel.channel_img} />
+//                                         <span>
+//                                             {channel.channel_name}
+//                                         </span>
+//                                     </a>
+//                                 )
+//                             })}
+//                         </div>
+//                     </section>
+//                 )
+//             })}
+//         </StyledFavorites>
+//     )
+// }
