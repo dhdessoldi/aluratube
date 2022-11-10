@@ -1,7 +1,6 @@
 import React from "react";
 import config from "../config.json";
 import styled from "styled-components";
-import { CSSReset } from "../src/components/CSSReset";
 import Menu from "../src/components/Menu";
 import { StyledTimeline } from "../src/components/Timeline";
 import { StyledFavorites } from "../src/components/Favorites";
@@ -13,7 +12,7 @@ function HomePage() {
 
     return (
         <>
-            <CSSReset />
+
             <div style={{
                 display: "flex",
                 flexDirection: "column",
@@ -35,6 +34,8 @@ function HomePage() {
 export default HomePage
 
 const StyledHeader = styled.div`
+    background-color: ${({theme}) => theme.backgroundLevel1};
+
     .banner {
         background-image: url("https://images.unsplash.com/photo-1638444458366-060c19121512?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80");
         background-size: cover;
